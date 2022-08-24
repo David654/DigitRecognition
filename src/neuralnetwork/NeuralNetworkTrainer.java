@@ -202,24 +202,4 @@ public class NeuralNetworkTrainer
             }
         }
     }
-
-    public BufferedImage[] getImageForTraining(String imageDir, int imageSamples, int digitPos)
-    {
-        File[] files = new File(imageDir).listFiles();
-        BufferedImage[] images = new BufferedImage[imageSamples];
-        for(int i = 0; i < imageSamples; i++)
-        {
-            try
-            {
-                assert files != null;
-                BufferedImage image = ImageIO.read(files[i]);
-                images[i] = image;
-            }
-            catch (IOException e)
-            {
-                e.printStackTrace();
-            }
-        }
-        return images;
-    }
 }

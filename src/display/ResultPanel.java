@@ -40,7 +40,7 @@ public class ResultPanel extends Canvas
 
         double[] inputNeurons = getCenteredImage(tiles);
 
-        printInputImage(inputNeurons);
+        //printInputImage(inputNeurons);
 
         return inputNeurons;
     }
