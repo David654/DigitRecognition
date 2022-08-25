@@ -66,7 +66,11 @@ public class ResultPanel extends Canvas
                 {
                     int x = i - cX + centerX;
                     int y = j - cY + centerY;
-                    inputNeurons[x + y * Constants.tileNum] = handler.getTile(i ,j).getColor().getRed() / 255d;
+                    int index = x + y * Constants.tileNum;
+                    if(index < Constants.tileNum * Constants.tileNum)
+                    {
+                        inputNeurons[index] = handler.getTile(i ,j).getColor().getRed() / 255d;
+                    }
                 }
             }
         }

@@ -11,7 +11,7 @@ import java.awt.*;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
-public class TrainingPanel
+public class TrainingPanel extends Window
 {
     private final JFrame frame;
     private JLabel imageSamplesLabel;
@@ -19,7 +19,6 @@ public class TrainingPanel
     private JProgressBar progressBar;
     private JLabel timeLabel;
     private JTextArea console;
-    private JScrollPane scrollPane;
     private final Timer timer;
 
     private final NeuralNetwork neuralNetwork;
@@ -30,6 +29,7 @@ public class TrainingPanel
 
     public TrainingPanel(int width, int height, String title, NeuralNetwork neuralNetwork)
     {
+        super(width, height, title);
         this.neuralNetwork = neuralNetwork;
         frame = new JFrame(title);
         frame.setSize(width, height);
@@ -39,7 +39,6 @@ public class TrainingPanel
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        initGUI();
         timer = new Timer(1000, e ->
         {
             time++;
@@ -99,7 +98,7 @@ public class TrainingPanel
         frame.dispose();
     }
 
-    private void initGUI()
+    protected void initGUI()
     {
         initNeuralNetworkPanel();
         initAlgorithmsPanel();
@@ -196,7 +195,7 @@ public class TrainingPanel
         console.setFont(console.getFont().deriveFont(12f));
         DefaultCaret caret = (DefaultCaret) console.getCaret();
         caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
-        scrollPane = new JScrollPane(console);
+        JScrollPane scrollPane = new JScrollPane(console);
         panel.add(scrollPane, BorderLayout.CENTER);
 
         panel.setAlignmentX(Component.LEFT_ALIGNMENT);
