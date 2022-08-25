@@ -1,8 +1,8 @@
-package display;
+package gui;
 
 import data.Constants;
-import drawing.Canvas;
-import drawing.Handler;
+import graphics.Canvas;
+import graphics.Handler;
 
 import javax.swing.border.LineBorder;
 import java.awt.*;

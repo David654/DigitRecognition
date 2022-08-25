@@ -1,6 +1,6 @@
-package display;
+package gui;
 
-import drawing.Handler;
+import graphics.Handler;
 
 import javax.swing.*;
 import java.awt.*;

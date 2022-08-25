@@ -1,8 +1,8 @@
 package input;
 
 import data.Constants;
-import drawing.Handler;
-import drawing.Tile;
+import graphics.Handler;
+import graphics.Tile;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;

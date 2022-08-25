@@ -1,8 +1,8 @@
-package display;
+package gui;
 
 import data.Constants;
-import drawing.Handler;
-import drawing.Tile;
+import graphics.Handler;
+import graphics.Tile;
 import input.Mouse;
 import neuralnetwork.NeuralNetwork;
 import neuralnetwork.NeuralNetworkTrainer;
@@ -68,6 +68,10 @@ public class Window
 
         NeuralNetworkTrainer neuralNetworkTrainer = new NeuralNetworkTrainer(neuralNetwork);
         neuralNetworkTrainer.read("resources\\output.dat");
+
+        neuralNetworkTrainer.learn("resources\\test", 10000, 1000);
+        neuralNetworkTrainer.saveResult("resources\\output.dat");
+
         /*long start = System.currentTimeMillis();
         neuralNetworkTrainer.learn("resources\\train", 60000, 4000);
         long end = System.currentTimeMillis();

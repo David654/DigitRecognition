@@ -36,6 +36,21 @@ public class NeuralNetwork
         }
     }
 
+    public UnaryOperator<Double> getActivation()
+    {
+        return activation;
+    }
+
+    public UnaryOperator<Double> getDerivative()
+    {
+        return derivative;
+    }
+
+    public double getLearningStep()
+    {
+        return learningStep;
+    }
+
     public double[] feedForward(double[] inputNeurons)
     {
         layers[0].setNeurons(inputNeurons);
@@ -120,5 +135,16 @@ public class NeuralNetwork
                 l1.setBias(i, l1.getBias(i) + gradients[i]);
             }
         }
+    }
+
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < layers.length; i++)
+        {
+            sb.append(layers[i].size);
+            if(i < layers.length - 1) sb.append(" → ");
+        }
+        return sb.toString();
     }
 }

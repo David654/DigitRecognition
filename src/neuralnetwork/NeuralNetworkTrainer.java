@@ -1,5 +1,7 @@
 package neuralnetwork;
 
+import gui.TrainingPanel;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
@@ -15,10 +17,6 @@ import java.util.Arrays;
 public class NeuralNetworkTrainer
 {
     private final NeuralNetwork neuralNetwork;
-    public static final int CENTER = 0;
-    public static final int RIGHT = 1;
-    public static final int BOTTOM = 2;
-    public static final int LEFT = 3;
 
     public NeuralNetworkTrainer(NeuralNetwork neuralNetwork)
     {
@@ -27,6 +25,14 @@ public class NeuralNetworkTrainer
 
     public void learn(String imageDir, int imageSamples, int epochs)
     {
+        TrainingPanel trainingPanel = new TrainingPanel(400, 600, "Neural Network Training", neuralNetwork);
+        trainingPanel.setEpochsTotal(epochs);
+        trainingPanel.setImageSamples(imageSamples);
+        trainingPanel.open();
+
+        trainingPanel.startTimer();
+        trainingPanel.printToConsole("READING DATA...");
+
         File[] files = new File(imageDir).listFiles();
         double[] digits = new double[imageSamples];
         BufferedImage[] images = new BufferedImage[imageSamples];
@@ -94,8 +100,12 @@ public class NeuralNetworkTrainer
 
                 neuralNetwork.backPropagation(targets);
             }
-            System.out.println("Epoch: " + i + ", correct: " + correct + ", error: " + errorSum);
+            //System.out.println("Epoch: " + i + ", correct: " + correct + ", error: " + errorSum);
+            trainingPanel.setEpochs(i);
+            trainingPanel.printToConsole(("Epoch: " + i + ", correct: " + correct + ", error: " + trainingPanel.format(errorSum, "#.###")));
         }
+        trainingPanel.printToConsole("LEARNING SUCCESSFULLY FINISHED.");
+        trainingPanel.stopTimer();
     }
 
     public void saveResult(String filename)

@@ -1,9 +1,9 @@
-package display;
+package gui;
 
 import data.Constants;
-import drawing.Canvas;
-import drawing.Handler;
-import drawing.Tile;
+import graphics.Canvas;
+import graphics.Handler;
+import graphics.Tile;
 import neuralnetwork.NeuralNetwork;
 import java.awt.*;
 import java.util.ArrayList;

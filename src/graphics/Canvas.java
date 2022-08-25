@@ -1,4 +1,4 @@
-package drawing;
+package graphics;
 
 import javax.swing.*;
 import java.awt.*;
